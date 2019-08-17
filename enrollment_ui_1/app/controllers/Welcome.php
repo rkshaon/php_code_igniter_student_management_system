@@ -68,9 +68,19 @@ class Welcome extends CI_Controller{
 			} else echo "Failed to Delete Student Record";
 		}
 	}
+	// search
 	public function search(){
-		echo "search page<br>";
-		print_r($_POST);
+		// echo "search page<br>";
+		// print_r($_POST);
+		if (isset($_POST['search']) && !empty($_POST['search'])) {
+			// echo "search field found";
+			$data['student']=$this->m_student->search_student($_POST['search']);
+			// print_r($data);
+			$this->load->view('header');
+			$this->load->view('student_list', $data);
+			$this->load->view('footer');
+
+		}
 	}
 }
 ?>

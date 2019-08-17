@@ -18,5 +18,13 @@ class M_student extends CI_model {
     function delete_student($id){
         return $this->db->where('id', $id)->delete('student');
     }
+    function search_student($keyword){
+        // return "found";
+        $this->db->like('name', $keyword);
+        $this->db->or_like('dept', $keyword);
+        $this->db->or_like('session', $keyword);
+        $result = $this->db->get('student')->result();
+        return $result;
+    }
 }
 ?>
