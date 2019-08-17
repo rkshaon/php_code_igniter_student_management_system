@@ -5,9 +5,20 @@ class Welcome extends CI_Controller{
 	public function __construct(){
         parent::__construct();
         $this->load->model('m_student');
+        $this->isLogIn();
+		if(!$this->isLogIn()){
+			// echo "You need to log in";
+			redirect(base_url(). 'index.php/authentication/admin_login');
+		}
+    }
+    public function isLogIn(){
+    	if (!isset($_SESSION['username'])) {
+    		return false;
+    	} else return true;
     }
 	public function index(){
 		$data['student'] = $this->m_student->list_student();
+		// $data['admin'] = $_SESSION
 		$this->load->view('header');
 		// $this->load->view('dashboard');
 		$this->load->view('student_list', $data);
@@ -79,7 +90,6 @@ class Welcome extends CI_Controller{
 			$this->load->view('header');
 			$this->load->view('student_list', $data);
 			$this->load->view('footer');
-
 		}
 	}
 }
