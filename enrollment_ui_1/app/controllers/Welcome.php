@@ -5,9 +5,20 @@ class Welcome extends CI_Controller{
 	public function __construct(){
         parent::__construct();
         $this->load->model('m_student');
+        $this->isLogIn();
+		if(!$this->isLogIn()){
+			// echo "You need to log in";
+			redirect(base_url(). 'index.php/authentication/admin_login');
+		}
+    }
+    public function isLogIn(){
+    	if (!isset($_SESSION['username'])) {
+    		return false;
+    	} else return true;
     }
 	public function index(){
 		$data['student'] = $this->m_student->list_student();
+		// $data['admin'] = $_SESSION
 		$this->load->view('header');
 		// $this->load->view('dashboard');
 		$this->load->view('student_list', $data);
@@ -68,9 +79,18 @@ class Welcome extends CI_Controller{
 			} else echo "Failed to Delete Student Record";
 		}
 	}
+	// search
 	public function search(){
-		echo "search page<br>";
-		print_r($_POST);
+		// echo "search page<br>";
+		// print_r($_POST);
+		if (isset($_POST['search']) && !empty($_POST['search'])) {
+			// echo "search field found";
+			$data['student']=$this->m_student->search_student($_POST['search']);
+			// print_r($data);
+			$this->load->view('header');
+			$this->load->view('student_list', $data);
+			$this->load->view('footer');
+		}
 	}
 }
 ?>
