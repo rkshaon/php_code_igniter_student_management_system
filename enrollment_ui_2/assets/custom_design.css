@@ -1,0 +1,7 @@
+.order_tr:hover{
+	border: none;
+	
+	box-shadow: 2px 2px 10px 1px #545B62;
+	transition: all .1s ease-in-out 0s;
+	cursor: pointer;
+}
