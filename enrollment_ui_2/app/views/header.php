@@ -13,7 +13,6 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url();?>assets/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link rel = "icon" type = "image/png" href = "<?php echo base_url();?>assets/logo/small.png">
   <link href="<?php echo base_url();?>assets/custom_design.css" rel="stylesheet" >
   <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
